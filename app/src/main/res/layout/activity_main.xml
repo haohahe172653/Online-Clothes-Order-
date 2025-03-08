@@ -2,7 +2,6 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:id="@+id/main"
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -17,7 +16,7 @@
             android:background="?attr/colorPrimary"
             app:title="Clothing Store"
             app:titleTextColor="@android:color/white"
-            app:layout_scrollFlags="scroll|enterAlways" />
+            app:layout_scrollFlags="scroll|enterAlways"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -26,8 +25,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
+    <!-- Nút Auto Add Product -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAutoAddProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="16dp"
+        android:src="@android:drawable/ic_menu_add"
+        android:contentDescription="Auto add products"
+    app:backgroundTint="@android:color/white"
+    app:tint="@android:color/black"/>
+
+    <!-- Nút Add Product (đã dịch chuyển sang bottom|end) -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddProduct"
         android:layout_width="wrap_content"
@@ -37,17 +49,18 @@
         android:src="@android:drawable/ic_input_add"
         android:contentDescription="Add new product"
         app:backgroundTint="@android:color/white"
-        app:tint="@android:color/black" />
+        app:tint="@android:color/black"/>
 
+    <!-- Nút View Cart (đã dịch chuyển sang bottom|center) -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabViewCart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|start"
+        android:layout_gravity="bottom|center"
         android:layout_margin="16dp"
         android:src="@android:drawable/ic_menu_view"
         android:contentDescription="View cart"
         app:backgroundTint="@android:color/white"
-        app:tint="@android:color/black" />
+        app:tint="@android:color/black"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

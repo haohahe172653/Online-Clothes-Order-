@@ -26,7 +26,6 @@ import java.util.List;
 public class OrderListActivity extends AppCompatActivity {
     private AppDatabase db;
     private AppDAO appDao;
-    private RecyclerView recyclerViewOrders;
     private OrderAdapter orderAdapter;
     private List<Order> orderList;
 
@@ -38,7 +37,7 @@ public class OrderListActivity extends AppCompatActivity {
         db = DatabaseClient.getInstance(getApplicationContext()).getAppDatabase();
         appDao = db.appDAO();
 
-        recyclerViewOrders = findViewById(R.id.recyclerViewOrders);
+        RecyclerView recyclerViewOrders = findViewById(R.id.recyclerViewOrders);
         recyclerViewOrders.setLayoutManager(new LinearLayoutManager(this));
         orderList = new ArrayList<>();
         orderAdapter = new OrderAdapter(this, orderList);

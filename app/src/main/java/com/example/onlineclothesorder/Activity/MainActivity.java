@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -55,6 +56,19 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton fabViewCart = findViewById(R.id.fabViewCart);
         fabViewCart.setOnClickListener(v -> startActivity(new Intent(this, CartActivity.class)));
 
+        // Thêm logic cho FAB Auto Add Product
+        FloatingActionButton fabAutoAddProduct = findViewById(R.id.fabAutoAddProduct);
+        fabAutoAddProduct.setOnClickListener(v -> {
+            new Thread(() -> {
+                autoAddProducts();
+                productList.clear();
+                productList.addAll(appDao.getAllProducts());
+                runOnUiThread(() -> {
+                    productAdapter.updateData(productList);
+                    Toast.makeText(MainActivity.this, "Products auto added", Toast.LENGTH_SHORT).show();
+                });
+            }).start();
+        });
         loadProducts();
     }
 
