@@ -8,30 +8,33 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="Checkout"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:gravity="center"/>
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvCheckoutItems"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Items: ..."
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="8dp"
+        android:text="Items: ..." />
 
     <EditText
         android:id="@+id/etPaymentMethod"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:drawable/edit_text"
         android:hint="Payment Method"
-        android:layout_marginTop="16dp"/>
+        android:padding="12dp"
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/btnSubmitOrder"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Submit Order"
-        android:layout_marginTop="16dp"/>
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:text="Submit Order" />
 
 </LinearLayout>
