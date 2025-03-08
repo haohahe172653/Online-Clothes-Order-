@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -44,14 +45,12 @@ public class CartActivity extends AppCompatActivity {
 
         tvTotal = findViewById(R.id.tvTotal);
         Button btnProceedCheckout = findViewById(R.id.btnProceedCheckout);
-        btnProceedCheckout.setOnClickListener(v -> {
-            startActivity(new Intent(this, CheckoutActivity.class));
-        });
+        btnProceedCheckout.setOnClickListener(v -> startActivity(new Intent(this, CheckoutActivity.class)));
 
         loadCart();
     }
 
-    private void loadCart() {
+    public void loadCart() {
         new Thread(() -> {
             cartList.clear();
             cartList.addAll(appDao.getAllCarts());
@@ -74,6 +73,13 @@ public class CartActivity extends AppCompatActivity {
             }
         }
         return total;
+    }
+
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+        loadCart();
     }
 }
 

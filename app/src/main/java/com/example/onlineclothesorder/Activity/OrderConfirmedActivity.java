@@ -1,10 +1,13 @@
 package com.example.onlineclothesorder.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.onlineclothesorder.DAO.AppDAO;
@@ -29,33 +32,35 @@ public class OrderConfirmedActivity extends AppCompatActivity {
         tvOrderDetails = findViewById(R.id.tvOrderDetails);
         Button btnTrackOrder = findViewById(R.id.btnTrackOrder);
 
-        // Mô phỏng order cuối cùng
+        // Thêm nút để xem danh sách đơn hàng
+        Button btnViewOrders = new Button(this);
+        btnViewOrders.setText("View All Orders");
+        btnViewOrders.setOnClickListener(v -> startActivity(new Intent(this, OrderListActivity.class)));
+        ((LinearLayout) tvOrderDetails.getParent()).addView(btnViewOrders);
+
         Order order = appDao.getAllOrders().get(appDao.getAllOrders().size() - 1);
         tvOrderDetails.setText(String.format("Order ID: %d, Total: $%.2f, Status: %s",
                 order.getOrderId(), order.getTotalAmount(), order.getStatus()));
 
-        // Mô phỏng cập nhật trạng thái
         new Handler().postDelayed(() -> {
             new Thread(() -> {
                 appDao.updateOrderStatus(order.getOrderId(), "Paid");
                 runOnUiThread(() -> {
                     Toast.makeText(this, "Order Paid", Toast.LENGTH_SHORT).show();
-                    // Mô phỏng email
                     Toast.makeText(this, "Order receipt sent to email", Toast.LENGTH_SHORT).show();
                 });
             }).start();
-        }, 2000); // Delay 2 giây
+        }, 2000);
 
         new Handler().postDelayed(() -> {
             new Thread(() -> {
                 appDao.updateOrderStatus(order.getOrderId(), "Shipped");
                 runOnUiThread(() -> {
                     Toast.makeText(this, "Order Shipped", Toast.LENGTH_SHORT).show();
-                    // Mô phỏng email vận chuyển
                     Toast.makeText(this, "Shipping confirmation sent", Toast.LENGTH_SHORT).show();
                 });
             }).start();
-        }, 4000); // Delay 4 giây
+        }, 4000);
 
         btnTrackOrder.setOnClickListener(v -> {
             Toast.makeText(this, "Tracking: Order " + order.getOrderId() + " shipped", Toast.LENGTH_SHORT).show();
