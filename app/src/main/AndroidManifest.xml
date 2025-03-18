@@ -12,24 +12,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OnlineClothesOrder"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Activity.Home"
+            android:exported="false" />
         <activity
             android:name=".Activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Activity.CartActivity"
             android:exported="false" />
-
         <activity
             android:name=".Activity.CheckoutActivity"
             android:exported="false" />
-
         <activity
             android:name=".Activity.OrderConfirmedActivity"
             android:exported="false" />
