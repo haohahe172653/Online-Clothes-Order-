@@ -7,6 +7,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.onlineclothesorder.Entity.Cart;
+import com.example.onlineclothesorder.Entity.Category;
 import com.example.onlineclothesorder.Entity.Order;
 import com.example.onlineclothesorder.Entity.Product;
 
@@ -33,6 +34,20 @@ public interface AppDAO {
     @Query("SELECT * FROM products WHERE name = :name LIMIT 1")
     Product getProductByName(String name); // Thêm truy vấn để kiểm tra trùng lặp theo tên
 
+    @Dao
+    public interface CategoryDao {
+        @Query("SELECT * FROM Category")
+        List<Category> getAllCategories();
+
+        @Insert
+        void insertCategory(Category category);
+
+        @Update
+        void updateCategory(Category category);
+
+        @Delete
+        void deleteCategory(Category category);
+    }
     // Cart CRUD
     @Insert
     void insertCart(Cart cart);
