@@ -2,9 +2,11 @@ plugins {
     alias(libs.plugins.android.application)
 }
 
+
 android {
     namespace = "com.example.onlineclothesorder"
     compileSdk = 35
+
 
     defaultConfig {
         applicationId = "com.example.onlineclothesorder"
@@ -13,8 +15,10 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+
 
     buildTypes {
         release {
@@ -31,6 +35,7 @@ android {
     }
 }
 
+
 dependencies {
     val room_version = "2.6.1"
     implementation ("androidx.room:room-runtime:$room_version")
@@ -46,4 +51,11 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.16.0")
+    implementation ("androidx.viewpager2:viewpager2:1.0.0")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
+
 }
+
