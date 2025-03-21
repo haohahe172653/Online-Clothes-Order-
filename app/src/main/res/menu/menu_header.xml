@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_sort"
+        android:title="Sort By"/>
+    <item android:id="@+id/menu_category"
+        android:title="Category Listing"/>
+    <item android:id="@+id/menu_wishlist"
+        android:title="Wishlist"/>
+    <item android:id="@+id/menu_logout"
+        android:title="Logout"/>
+</menu>
+
